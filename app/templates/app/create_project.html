@@ -1,0 +1,42 @@
+{% extends "app/index.html" %}
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+				{% if user.id == 1 %} 
+
+<div class="container">
+
+    <div id="fh5co-main">
+
+
+        <form method="post"  enctype="multipart/form-data">
+            <div class="form-group">
+                {% csrf_token %}
+                {{form}}
+                <br>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-md" value="Create">
+                </div>
+
+            </div>
+
+
+
+        </form>
+        <div style="margin-top:500px;"></div>
+
+    </div>
+
+
+</div>
+
+
+{% endif %}
+				{% endif %} 
+
+
+{% endblock content %}

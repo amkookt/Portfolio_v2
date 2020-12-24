@@ -1,0 +1,38 @@
+{% extends "app/index.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div id="fh5co-main">
+ <div class="fh5co-narrow-content">
+	<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">projects</h2>
+    <!-- <div class="row row-bottom-padded-md"> -->
+		{% for project in projects %}
+        <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+            <div class="blog-entry">
+                <a href="{% url 'detail' project.pk %}" class="blog-img"><img src="{{project.image.url}}" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+                <div class="desc">
+                    <h3><a href="#">{{project.title}}|{{project.author.id}}</a></h3>
+                    <span><small>{{project.author}}</small> / <small> {{ project.languages }} </small> / <small> <i class="icon-comment"></i> 14</small></span>
+                    <p>{{ project.description|slice:":100" }}...</p>
+					
+					<a href="{% url 'detail' project.pk %}" class="lead">Read More <i class="icon-arrow-right3"></i></a>|
+					{% if user.is_authenticated %}
+						{% if user.id == project.author.id %}
+					<a href="{% url 'update' project.pk %}" class="lead">Update<i class="icon-arrow-right3"></i></a>|
+					<a href="{% url 'delete' project.pk %}" class="lead">Delete<i class="icon-arrow-right3"></i></a>|
+						{% endif %}
+					{% endif %}
+					
+                </div>
+            </div>
+		</div>
+		{% endfor %}
+	<!-- </div> -->
+</div>
+</div>
+		 
+	{% endblock content %}
+	

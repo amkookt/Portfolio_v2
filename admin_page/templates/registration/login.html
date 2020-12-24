@@ -1,0 +1,41 @@
+{% extends "app/index.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+
+<div class="container">
+
+    <div id="fh5co-main">
+
+
+        <form method="post"  enctype="multipart/form-data">
+            <div class="form-group"><br>
+                <center><h3>REGISTER ACCOUNT</h3></center>
+                {% csrf_token %}
+                {{form | crispy}}
+                <br>
+
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create">
+                </div>
+
+            </div>
+
+
+
+        </form>
+        <div style="margin-top:500px;"></div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+{% endblock content %}

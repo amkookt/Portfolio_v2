@@ -1,0 +1,30 @@
+{% extends "app/index.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+   
+        
+    
+    <div id="fh5co-main">
+       
+        <form method="post"  class="form-group" >
+            {% csrf_token %}
+            <center><h3>REGISTER ACCOUNT</h3></center>
+            
+                {{form|crispy}} 
+                
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
+                </div>
+
+
+
+        </form>
+        <div style="margin-top:500px;"></div>
+    </div>
+</div> 
+
+{% endblock content %}
