@@ -6,6 +6,7 @@ from .forms import ProjectForm,AboutForm,ServiceForm
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class IndexView(TemplateView):
@@ -56,9 +57,10 @@ class CreateProjectView(CreateView):
         initial = super(CreateProjectView, self).get_initial(**kwargs)
         initial['author'] = 'author'
         return initial
-class UpdateProjectView(UpdateView):
+class UpdateProjectView(SuccessMessageMixin,UpdateView):
     model = Project
     form_class = ProjectForm 
+    success_message = 'List successfully saved!!!!'
     template_name="app/update_project.html"
 
 
